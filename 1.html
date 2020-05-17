@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    #box {
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+      position: absolute;
+      left: 0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <button id="btn1">往右走吧</button>
+  <div id="box"></div>
+  <script src="../jQuery/js/jquery-1.12.3.js"></script>
+  <script>
+    var box = document.querySelector('#box')
+    var btn1 = document.querySelector('#btn1')
+
+    var targetLeft = 800
+    var stepLength = 5
+    var startLeft = parseInt($(box).css('left'))
+    console.log($(box).css('left'));
+
+    var timer
+    btn1.onclick = function () {
+      // box.style.left = '200px'
+
+      clearInterval(timer)
+
+      timer = setInterval(function () {
+        startLeft += stepLength
+        console.log(startLeft);
+
+        if (startLeft >= targetLeft) {
+          startLeft = targetLeft
+        }
+        box.style.left = startLeft + 'px'
+
+        if (startLeft >= targetLeft) {
+          clearInterval(timer)
+        }
+
+      }, 30)
+
+
+    }
+  </script>
+</body>
+
+</html>
